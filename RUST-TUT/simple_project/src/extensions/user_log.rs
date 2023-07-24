@@ -10,9 +10,9 @@ pub fn run() {
     let machine_name = gethostname();
 
     // Debug purposes
-    // println!("User: {:?} {:?}", user_name, machine_name);
-    // println!("Time loggedIn: {:?}", current_time);
-    // println!("Machine Used: {:?}", machine_name);
+    println!("User: {:?} {:?}", user_name, machine_name);
+    println!("Time loggedIn: {:?}", current_time);
+    println!("Machine Used: {:?}", machine_name);
 
     println!("{:?} logedin through {:?} at {:?}", user_name, machine_name, current_time )
 }

@@ -1,0 +1,5 @@
+docker build -t php_mvc .
+docker run -d -p 80:90 php_mvc
+
+# 
+docker run -d -p 80:90 -v "$(pwd)":/var/www/html php_mvc
