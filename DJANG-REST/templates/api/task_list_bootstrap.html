@@ -1,0 +1,50 @@
+<!-- api/templates/api/task_list.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task List</title>
+
+        <!-- Add necessary CSS and JS links for modals -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   
+</head>
+<body>
+    <h1>Task List</h1>
+    <ul>
+        {% for task in task_list %}
+            <li><a href="{% url 'api:task-detail' task.pk %}">{{ task.title }}</a></li>
+        {% endfor %}
+    </ul>
+    {% comment %} <a href="{% url 'api:task-create' %}">Add Task</a> {% endcomment %}
+
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addModal">
+        Add Task
+    </button>
+
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addModalLabel">Add Task</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Add Task Form -->
+                    <form method="post" action="{% url 'api:task-list-create' %}">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-success">Add Task</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

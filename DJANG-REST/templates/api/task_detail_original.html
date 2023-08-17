@@ -1,0 +1,16 @@
+<!-- api/templates/api/task_detail.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ task.title }}</title>
+</head>
+<body>
+    <h1>{{ task.title }}</h1>
+    <p>Description: {{ task.description }}</p>
+    <p>Created at: {{ task.created_at }}</p>
+    <a href="{% url 'api:task-update' task.pk %}">Edit</a>
+    <a href="{% url 'api:task-delete' task.pk %}">Delete</a>
+    <a href="{% url 'api:task-list' %}">Back to List</a>
+</body>
+</html>
